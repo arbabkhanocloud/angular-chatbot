@@ -1,0 +1,33 @@
+<div class="ai-chatbot">
+    <div class="ai-chatbot-container">
+        <h1>Angular OpenAI Chat Bot</h1>
+        <div class="chat-container" #chatContainer>
+            <div *ngFor="let message of chatMessages" [ngClass]="message.role">
+                {{ message.content }}
+            </div>
+        </div>
+
+        <div class="input-container">
+            <label class="label" *ngIf="chatMessages.length == 0; else dialogInfo" for="nameField">Your message</label>
+            <div class="input-wrapper">
+                <mat-spinner *ngIf="isLoading" color="white" diameter="25" class="spinner"></mat-spinner>
+                <input [(ngModel)]="userMessage" (keyup.enter)="sendMessageStream()"
+                    [style.cursor]="isLoading ? 'not-allowed':''"
+                    [placeholder]="isLoading ? 'generating response' : 'Enter your message'" [disabled]="isLoading" />
+                <button (click)="isLoading? stopStreaming():sendMessageStream()"
+                    [style.cursor]="isLoading ? 'pointer':'pointer'">
+                    <span *ngIf="!isLoading">Send </span>
+                    <div *ngIf="isLoading" class="stop-processing">
+                        <span>Stop
+                        </span>
+                        <mat-spinner color="white" diameter="25"></mat-spinner>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #dialogInfo>
+    <span [className]="'float-right'">Total messages: {{chatMessages.length}}</span>
+</ng-template>

@@ -1,0 +1,55 @@
+.chatbot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .message {
+    border-radius: 50px;
+    margin: 0 15px 20px;
+    padding: 10px 20px;
+    position: relative;
+    font-size: 20px;
+  }
+  .message.to {
+    background-color: #2095fe;
+    color: #fff;
+    margin-left: 100px;
+    text-align: right;
+  }
+  .message.from {
+    background-color: #e5e4e9;
+    color: #363636;
+    margin-right: 100px;
+  }
+  .message.to + .message.to,
+  .message.from + .message.from {
+    margin-top: -10px;
+  }
+  .send-message {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 25px;
+    }
+  }
+
+  .send-message input {
+    margin-top: 10px;
+    width: 500px;
+    padding: 10px;
+    border-color: #2095fe;
+    border-radius: 15px;
+    height: 32px;
+    font-size: 24px;
+  }
+  .send-message button {
+    margin-top: 10px;
+    background-color: rgb(233, 16, 135);
+    padding: 15px;
+    width: 100px;
+    color: white;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
